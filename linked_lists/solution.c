@@ -32,39 +32,47 @@ int pop(node_t **head) {
 }
 
 int remove_by_value(node_t **head, int val) {
-    if (head == NULL) {
+    node_t *previous, *current;
+
+    if (*head == NULL) {
         return -1;
     }
 
-    node_t *current = (*head);
-
-    if (current->val == val) {
-        pop(head);
-        return 0;
+    if ((*head)->val == val) {
+        return pop(head);
     }
 
-    if (current->next == NULL) {
-        return -1;
-    }
-
-    while (current->next->val != val) {
-        if (current->next->next == NULL) {
-            return -1;
+    previous = *head;
+    current = (*head)->next;
+    while (current) {
+        if (current->val == val) {
+            previous->next = current->next;
+            free(current);
+            return val;
         }
+
+        previous = current;
         current = current->next;
     }
-
-    node_t *temp_node = NULL;
-    temp_node = current->next;
-    current->next = temp_node->next;
-    free(temp_node);
-
-    return 0;
+    return -1;
 }
 
-int main() {
+void delete_list(node_t *head) {
+    node_t *current = head, *next = head;
+
+    while (current) {
+        next = current->next;
+        free(current);
+        current = next;
+    }
+}
+
+int main(void) {
     node_t *test_list = (node_t *)malloc(sizeof(node_t));
+
+    // remove_by_value(&test_list, 3);
     test_list->val = 1;
+    // remove_by_value(&test_list, 1);
     test_list->next = (node_t *)malloc(sizeof(node_t));
     test_list->next->val = 2;
     test_list->next->next = (node_t *)malloc(sizeof(node_t));
@@ -76,6 +84,7 @@ int main() {
     remove_by_value(&test_list, 3);
 
     print_list(test_list);
+    delete_list(test_list);
 
-    return 0;
+    return EXIT_SUCCESS;
 }
