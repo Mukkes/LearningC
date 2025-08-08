@@ -64,3 +64,6 @@ dkms.conf
 
 # ccls lsp cache files
 .ccls-cache
+
+#Unignore Makefile
+!Makefile
