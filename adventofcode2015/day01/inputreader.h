@@ -1,5 +1,5 @@
-#ifndef INPUTREADER_H_INCLUDED
-#define INPUTREADER_H_INCLUDED
+#ifndef INPUTREADER_H
+#define INPUTREADER_H
 
 void ReadInput(char *input, int lenght);
 
