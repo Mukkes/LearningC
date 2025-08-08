@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall
-objects = day01.o
+objects = day01.o inputreader.o
 
 all: day01
 
