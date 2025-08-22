@@ -1,10 +1,5 @@
+#include "box.h"
 #include <stdio.h>
-
-typedef struct {
-    int l;
-    int w;
-    int h;
-} Box;
 
 Box ConvertStringToBox(char *line);
 int GetSurfaceArea(Box box);
