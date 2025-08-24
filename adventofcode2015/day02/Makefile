@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall
-objects = day02.o 
+objects = day02.o box.o
 
 all: day02
 

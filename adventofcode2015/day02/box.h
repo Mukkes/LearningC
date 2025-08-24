@@ -7,8 +7,7 @@ typedef struct Box {
     int h;
 } Box;
 
-Box CreateBox(char *line);
-int GetRequiredWarppingPaper(Box box);
-int GetSmallestSide(Box box);
+int GetRequiredWarppingPaper(Box *box);
+int GetRibbon(Box *box);
 
 #endif
